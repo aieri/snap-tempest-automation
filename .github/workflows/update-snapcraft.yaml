@@ -38,7 +38,7 @@ jobs:
               --release ${{ inputs.openstack-release }} \
               --manual-requirements ${{ env.SNAP_REPO_PATH }}/requirements-manual.txt \
               --excluded-plugins ${{ env.SNAP_REPO_PATH }}/excluded-plugins.txt
-          git diff --exit-code ${{ env.SNAP_REPO_PATH }}/snap/snapcraft.yaml \
+          cd ${{ env.SNAP_REPO_PATH }} && git diff --exit-code snap/snapcraft.yaml \
               && echo "create_pr=0" >> $GITHUB_OUTPUT \
               || echo "create_pr=1" >> $GITHUB_OUTPUT
       - name: Create Pull Request
@@ -51,7 +51,6 @@ jobs:
           token: ${{ github.token }}  # Use the auto-generated action token
           path: $SNAP_REPO_PATH
           title: "release(${{ inputs.openstack-release }}): update snapcraft.yaml"
-          commit: "release(${{ inputs.openstack-release }}): update snapcraft.yaml"
           committer: "Github Action Bot"
           commit-message: |
             release(${{ inputs.openstack-release }}): update snapcraft.yaml
