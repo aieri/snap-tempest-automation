@@ -49,7 +49,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}  # Use the auto-generated action token
         with:
           token: ${{ github.token }}  # Use the auto-generated action token
-          path: $SNAP_REPO_PATH
+          path: ${{ env.SNAP_REPO_PATH }}
           title: "release(${{ inputs.openstack-release }}): update snapcraft.yaml"
           committer: "Github Action Bot"
           commit-message: |
