@@ -19,12 +19,12 @@ jobs:
         with:
           repository: canonical/snap-tempest
           ref: stable/${{ inputs.openstack-release }}
-          path: $SNAP_REPO_PATH
+          path: ${{ env.SNAP_REPO_PATH }}
       - name: Checkout snap-tempest-automation
         uses: actions/checkout@v4
         with:
           ref: main
-          path: $AUTOMATION_REPO_PATH
+          path: ${{ env.AUTOMATION_REPO_PATH }}
       - name: Install tox
         run: |
           sudo apt-get update
