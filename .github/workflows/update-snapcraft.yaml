@@ -32,7 +32,7 @@ jobs:
       - name: Update Snapcraft YAML
         id: update_snapcraft
         run: |
-          tox -e release -- \
+          tox --workdir $AUTOMATION_REPO_PATH -e release -- \
               --input $SNAP_REPO_PATH/snap/snapcraft.yaml \
               --output $SNAP_REPO_PATH/snap/snapcraft.yaml \
               --release ${{ inputs.openstack-release }} \
